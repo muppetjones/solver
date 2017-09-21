@@ -20,7 +20,7 @@ class TestSolver(unittest.TestCase):
                 self.assertEqual(found, expected)
 
     def test_raises_ValueError_if_non_digit_operand_given(self):
-        with self.assertRaises(ValueError, 'operands must be digits'):
+        with self.assertRaisesRegex(ValueError, 'operands must be digits'):
             MOD.solve('X + Y')
 
 
@@ -34,7 +34,7 @@ class TestSolver__main(unittest.TestCase):
     def test_joins_argv_input_into_equation_str_if_no_input(self):
         with mock.patch.object(MOD, 'solve') as mock_solve, \
                 mock.patch.object(MOD, 'sys') as mock_sys:
-            mock_sys.argv = ['foo']
+            mock_sys.argv = ['script.py', 'foo']
             MOD.main()
         mock_solve.assert_called_once_with('foo')
 

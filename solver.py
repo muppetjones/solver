@@ -13,7 +13,11 @@ import sys
 
 def solve(equation_str):
     digits = re.split(r'[\s\+]+', equation_str)
-    return sum(int(x) for x in digits)
+    try:
+        return sum(int(x) for x in digits)
+    except ValueError:
+        msg = 'operands must be digits'
+        raise ValueError(msg) from None
 
 
 def main(equation_str=None):
