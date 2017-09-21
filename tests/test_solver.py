@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Tests for the solver module."""
 
+import sys
 import unittest
 from unittest import mock
 
@@ -26,21 +27,30 @@ class TestSolver(unittest.TestCase):
 
 class TestSolver__main(unittest.TestCase):
 
+    def setUp(self):
+        super().setUp()
+
+        patch = mock.patch.object(MOD, 'solve')
+        self.mock_solve = patch.start()
+        self.addCleanup(patch.stop)
+
     def test_main_calls_solve_with_input(self):
-        with mock.patch.object(MOD, 'solve') as mock_solve:
-            MOD.main('foo')
-        mock_solve.assert_called_once_with('foo')
+        MOD.main('foo')
+        self.mock_solve.assert_called_once_with('foo')
 
     def test_joins_argv_input_into_equation_str_if_no_input(self):
-        with mock.patch.object(MOD, 'solve') as mock_solve, \
-                mock.patch.object(MOD, 'sys') as mock_sys:
+        with mock.patch.object(MOD, 'sys') as mock_sys:
             mock_sys.argv = ['script.py', 'foo']
             MOD.main()
-        mock_solve.assert_called_once_with('foo')
+        self.mock_solve.assert_called_once_with('foo')
 
     def test_main_prints_solve_output(self):
-        with mock.patch.object(MOD, 'print') as mock_print, \
-                mock.patch.object(MOD, 'solve') as mock_solve:
+        with mock.patch.object(MOD, 'print') as mock_print:
             MOD.main('foo')
+        mock_print.assert_called_once_with(self.mock_solve.return_value)
 
-        mock_print.assert_called_once_with(mock_solve.return_value)
+    def test_main_prints_ValueError_message_if_solve_fails(self):
+        self.mock_solve.side_effect = ValueError('foo')
+        with mock.patch.object(MOD, 'print') as mock_print:
+            MOD.main('bar')  # should not raise!
+        mock_print.assert_called_once_with('foo', file=sys.stderr)

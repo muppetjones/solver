@@ -44,6 +44,8 @@ class TestSolverAddition(unittest.TestCase):
             subprocess.check_output(cmd.split(), stderr=subprocess.STDOUT)
         except subprocess.CalledProcessError as e:
             found = e.output.decode()
+        else:
+            self.fail('Script returned successfully')
 
         # And she's delignted to find that the script fails and prints a
         # helpful error message.
