@@ -20,8 +20,9 @@ class TestSolverAddition(unittest.TestCase):
 
         # She checks the output against the expected answer,
         # is thrilled to find it worked!
+        found = result.decode().strip()
         expected = '2'
-        self.assertEqual(result, expected)
+        self.assertEqual(found, expected)
 
         # # Kate tries a slightly harder sum.
         # cmd = 'python3 {} 1 + 41'.format(SCRIPT_PATH)
