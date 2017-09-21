@@ -1,0 +1,29 @@
+# Solver
+Stephen J. Bush <muppetjones@gmail.com>
+v1.0.0, 2017-09
+:toc:
+:toc-placement: preambe
+:toclevels: 1
+:sectlinks:
+
+.{revdate}: JANE {revnumber}
+************************************************************************
+This README is incomplete.
+************************************************************************
+
+:numbered!:
+[abstract]
+## Introduction
+
+This project is intended to provide a gentle introduction to Test-Driven Development (TDD). The project implements a simple calculator script and includes both functional and unit tests written in python 3.5.
+
+
+:numbered:
+## Installation
+
+1. Setting up a virtual environment.
+2. Setting up git.
+
+## Documentation
+
+Add a manuscript walking users through each step.
