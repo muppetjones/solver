@@ -7,13 +7,18 @@ Usage:
 
 """
 
+import sys
+
 
 def solve(equation_str):
     return 2
 
 
-def main():
-    pass
+def main(equation_str=None):
+    if not equation_str:
+        equation_str = ' '.join(sys.argv)
+    result = solve(equation_str)
+    print(result)
 
 if __name__ == '__main__':
     main()

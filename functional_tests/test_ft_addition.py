@@ -14,7 +14,7 @@ class TestSolverAddition(unittest.TestCase):
     def test_solver_prints_solution_to_basic_addition_of_two_numbers(self):
         # Kate is tired. She hates mental math.
         # She decides to give solver a try.
-        # Kate calls solver with two numbers.
+        # Kate tests solver with two numbers.
         cmd = 'python3 {} 1 + 1'.format(SCRIPT_PATH)
         result = subprocess.check_output(cmd.split())
 
@@ -22,3 +22,9 @@ class TestSolverAddition(unittest.TestCase):
         # is thrilled to find it worked!
         expected = '2'
         self.assertEqual(result, expected)
+
+        # # Kate tries a slightly harder sum.
+        # cmd = 'python3 {} 1 + 41'.format(SCRIPT_PATH)
+        # result = subprocess.check_output(cmd.split())
+        # expected = '42'
+        # self.assertEqual(result, expected)
