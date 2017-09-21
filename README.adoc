@@ -19,11 +19,28 @@ This project is intended to provide a gentle introduction to Test-Driven Develop
 
 
 :numbered:
-## Installation
+## Getting Started
+
+### Installation
 
 1. Setting up a virtual environment.
 2. Setting up git.
 
-## Documentation
 
-Add a manuscript walking users through each step.
+### Setup your repo
+
+It's important to define and maintain the directory structure of your repo. A well-organized repo will be easier for you to maintain the code, but will also be easier for new developers to use and modify. Your repo's structure depends on a number of factors, including which languages you plan on using and the purpose of the project: A Flask project will look very different from a standard python package.
+
+However, a few elements should always be there:
+
+* A top-level `README`. The contents and format will vary, but a `README` should provide a quick summary about what your program does.
+
+* A top-level `LICENSE`. It's always good practice to add a LICENSE to protect your code. Just make sure your employer and collaborators agree on which license to use.
+
+* A top-level `.gitignore`. This file prevents you from automatically adding trash files to your repository and is highly language dependent. It never hurts to add `*.log` and `*.env`, though.
+
+* A top-level `requirements.txt`. This file defines the python packages that your program uses. You'll use `pip freeze` to create it, but ignore it for now--we don't need any external packages at the moment.
+
+* A top-level `CHANGEDOC`. This file should contain comments about updates to your code. There's not an exact format, but I'd recommend organizing it by date, with subheaders indicating additions and changes. This document should let users know what changed that is relevant to how they use the program, including new features, bug fixes, and known bugs.
+
+The first three files can be automatically created if you setup your repo through GitHub. We'll step through adding our repo to GitHub later, so you can ignore these files for now. The last two will be important as your package progresses, but you can ignore them, too.
