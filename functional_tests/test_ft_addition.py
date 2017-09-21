@@ -32,3 +32,16 @@ class TestSolverAddition(unittest.TestCase):
         found = result.decode().strip()
         expected = '42'
         self.assertEqual(found, expected)
+
+        # But Kate is a trouble maker and decides to screw with it.
+        # She wonders what will happen if she puts in a non-numerical value
+        try:
+            cmd = 'python3 {} X + 1'.format(SCRIPT_PATH)
+            subprocess.check_output(cmd.split(), stderr=subprocess.STDOUT)
+        except subprocess.CalledProcessError as e:
+            found = e.output
+
+        # And she's delignted to find that the script fails and prints a
+        # helpful error message.
+        expected = 'operands must be digits'
+        self.assertEqual(found, expected)
