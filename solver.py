@@ -8,7 +8,7 @@ Usage:
 """
 
 
-def solve():
+def solve(equation_str):
     pass
 
 
