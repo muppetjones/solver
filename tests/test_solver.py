@@ -3,13 +3,12 @@
 
 import unittest
 
-import solver
+import solver as MOD
 
 
-class SolverTestCase(unittest.TestCase):
-    """Setup and methods common to to all test sets."""
+class TestSolver(unittest.TestCase):
 
-    pass
-
-
-class
+    def test_solve_returns_integer_solution_to_equation_string(self):
+        found = MOD.solve('1 + 1')
+        expected = 2
+        self.assertEqual(found, expected)
