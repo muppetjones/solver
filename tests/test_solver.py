@@ -19,6 +19,10 @@ class TestSolver(unittest.TestCase):
                 found = MOD.solve(given)
                 self.assertEqual(found, expected)
 
+    def test_raises_ValueError_if_non_digit_operand_given(self):
+        with self.assertRaises(ValueError, 'operands must be digits'):
+            MOD.solve('X + Y')
+
 
 class TestSolver__main(unittest.TestCase):
 
