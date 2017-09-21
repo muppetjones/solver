@@ -24,8 +24,11 @@ class TestSolverAddition(unittest.TestCase):
         expected = '2'
         self.assertEqual(found, expected)
 
-        # # Kate tries a slightly harder sum.
-        # cmd = 'python3 {} 1 + 41'.format(SCRIPT_PATH)
-        # result = subprocess.check_output(cmd.split())
-        # expected = '42'
-        # self.assertEqual(result, expected)
+        # Kate tries a slightly harder sum.
+        cmd = 'python3 {} 1 + 41'.format(SCRIPT_PATH)
+        result = subprocess.check_output(cmd.split())
+
+        # And it works!
+        found = result.decode().strip()
+        expected = '42'
+        self.assertEqual(found, expected)

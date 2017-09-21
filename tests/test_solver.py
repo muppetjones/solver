@@ -10,9 +10,14 @@ import solver as MOD
 class TestSolver(unittest.TestCase):
 
     def test_solve_returns_integer_solution_to_equation_string(self):
-        found = MOD.solve('1 + 1')
-        expected = 2
-        self.assertEqual(found, expected)
+        test_list = [
+            ('1 + 1', 2),
+            ('1 + 41', 42),
+        ]
+        for given, expected in test_list:
+            with self.subTest(equation=given):
+                found = MOD.solve(given)
+                self.assertEqual(found, expected)
 
 
 class TestSolver__main(unittest.TestCase):

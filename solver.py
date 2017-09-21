@@ -7,16 +7,18 @@ Usage:
 
 """
 
+import re
 import sys
 
 
 def solve(equation_str):
-    return 2
+    digits = re.split(r'[\s\+]+', equation_str)
+    return sum(int(x) for x in digits)
 
 
 def main(equation_str=None):
     if not equation_str:
-        equation_str = ' '.join(sys.argv)
+        equation_str = ' '.join(sys.argv[1:])
     result = solve(equation_str)
     print(result)
 
