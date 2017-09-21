@@ -54,3 +54,14 @@ class TestSolver__main(unittest.TestCase):
         with mock.patch.object(MOD, 'print') as mock_print:
             MOD.main('bar')  # should not raise!
         mock_print.assert_called_once_with('foo', file=sys.stderr)
+
+    def test_main_returns_0_if_equation_solved(self):
+        found = MOD.main('1 + 1')  # should not raise!
+        expected = 0
+        self.assertEqual(found, expected)
+
+    def test_main_returns_1_if_error_solving_equation(self):
+        self.mock_solve.side_effect = ValueError('foo')
+        found = MOD.main('bar')  # should not raise!
+        expected = 1
+        self.assertEqual(found, expected)

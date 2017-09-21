@@ -43,7 +43,7 @@ class TestSolverAddition(unittest.TestCase):
             cmd = 'python3 {} X + 1'.format(SCRIPT_PATH)
             subprocess.check_output(cmd.split(), stderr=subprocess.STDOUT)
         except subprocess.CalledProcessError as e:
-            found = e.output.decode()
+            found = e.output.decode().strip()
         else:
             self.fail('Script returned successfully')
 

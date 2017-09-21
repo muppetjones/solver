@@ -21,16 +21,23 @@ def solve(equation_str):
 
 
 def main(equation_str=None):
+    status_code = 0
+
     if not equation_str:
         equation_str = ' '.join(sys.argv[1:])
-    # result = solve(equation_str)
+
     try:
         result = solve(equation_str)
     except ValueError as e:
         print(str(e), file=sys.stderr)
+        status_code = 1
     else:
         print(result)
+        status_code = 0
+    finally:
+        return status_code
 
 
 if __name__ == '__main__':
-    main()
+    exit_code = main()
+    sys.exit(exit_code)
